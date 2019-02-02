@@ -1,0 +1,15 @@
+#left {
+	float: left;					/* This causes the content to move to the left */
+	width: 85%;					/* We need to set the width whenever we float an element */
+}
+
+#sidebar-right {
+	float: left; 					/* This causes the sidebar to move to the left
+										It's going to appear to the left of the content because
+										we declared it first in our HTML page */
+	width: 15%; 					/* We need to set the width whenever we float an element */
+}
+
+#content{
+  background-color: rgb(247, 14, 255)
+}

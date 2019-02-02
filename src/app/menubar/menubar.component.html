@@ -1,0 +1,44 @@
+<div id="content">
+<p>
+  menubar works!
+  <a [routerLink]="[ '/start' ]">Start</a>
+  <span><button (click)="toggle($event)" class="roomlist">Raumliste</button> </span>
+  <span><button (click)="toggle($event)" class="bag">Tasche</button></span>
+  <span><button (click)="toggle($event)" class="clubs">Clubs</button></span>
+  <a [routerLink]="[ '/market' ]">Markt</a>
+  <span><button (click)="toggle($event)" class="request">Anfragen</button></span>
+  <span><button (click)="toggle($event)" class="pn">PN</button></span>
+  <span>Geld</span>
+  <span><button (click)="toggle($event)" class="settings">Einstellungen</button></span>
+
+  
+  
+</p>
+<div [class]="overlay" [style.display]="none">
+  <button (click)="toggle($event)">Schliessen</button>
+  
+    <div class="componentWindow" [ngSwitch]="mycomp">
+    <div *ngSwitchCase="'roomlist'">
+       <app-roomlist (changedRoom)="changeRoom($event)" [rooms$]="rooms$" [room$]="room$" ></app-roomlist>
+    </div>
+    <div *ngSwitchCase="'bag'">
+        
+    </div>
+    <div *ngSwitchCase="'clubs'">
+        <app-clubs></app-clubs>
+    </div>
+    <div *ngSwitchCase="'request'">
+        <app-notification></app-notification>
+    </div>
+    <div *ngSwitchCase="'pn'">
+        <app-privatemessage></app-privatemessage>
+    </div>
+    <div *ngSwitchCase="'settings'">
+        <app-settings></app-settings>
+    </div>
+    <div *ngSwitchDefault>
+        <h1>Nothing</h1>
+    </div>
+  </div>
+</div>
+</div>

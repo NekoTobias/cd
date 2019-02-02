@@ -1,0 +1,16 @@
+<div id="content"><app-chatwindow [room2]="room2" [room$]="room$"></app-chatwindow> </div>
+<!-- <span><input type="text" [value]="sendmessage"/><button (click)="sendMessage()">Senden</button></span> -->
+<form [formGroup]="registerForm" (ngSubmit)="sendMessage()">
+    
+    <div class="form-group">
+        <label for="input">Input</label>
+        <input type="text" formControlName="message" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.message.errors }" />
+        <div *ngIf="submitted && f.message.errors" class="invalid-feedback">
+            <div *ngIf="f.message.errors.required">Message is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button>Senden</button>
+       
+    </div>
+</form>

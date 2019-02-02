@@ -1,0 +1,19 @@
+<p>
+  chathistory works!
+</p>
+<ul>
+  <li (click)="onTest()" *ngFor="let message of messageTmp">{{message.content}}</li>
+</ul>
+<!-- <h1 *ngFor="let room of rooms$ | async">{{room.name}}</h1> -->
+<div *ngIf="room$ | async as room">{{room.name}}
+<h1>Verlauf</h1>
+<ul>
+  <li  *ngFor="let message of room.verlauf">
+  {{ message }}
+  </li>
+  </ul>
+<h2 >
+  You have {{ room.verlauf.length }} Messages!
+</h2>
+<!-- <div> hallo {{test}} </div> -->
+</div>

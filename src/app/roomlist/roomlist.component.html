@@ -1,0 +1,9 @@
+<p>
+  roomlist works!
+</p>
+<div>
+<h2>Rooms:</h2>
+<ul>
+  <li *ngFor="let room of rooms$ | async" (click)="changeRoom(room)">{{room.name}}</li>
+</ul>
+</div>

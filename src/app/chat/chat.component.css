@@ -1,0 +1,81 @@
+/*
+	This is basic CSS code for a website with a header, footer, and 3 columns
+	The sidebars are on the left and right
+	The site is centered and 960px wide
+*/
+
+
+
+/* Basic Structure */
+
+body {
+	text-align: center;				/* This is a hack for older browsers to center the page */
+}
+
+#container {
+	margin: 0 auto; 				/* This centers the page in modern browsers */
+	text-align: left; 				/* This is a hack for older browsers to center the page */
+	width: 960px; 					/* This sets our total page width */
+}
+
+#header {
+
+    height: 10%;				/* This sets the header to stretch the full page width */
+}
+
+#navigation li {
+	display: inline; 				/* Make our navigation display in a line */
+}
+
+#content {
+	float: left;					/* This causes the content to move to the left */
+	width: 85%;					/* We need to set the width whenever we float an element */
+}
+
+#sidebar-left {
+	float: left; 					/* This causes the sidebar to move to the left
+										It's going to appear to the left of the content because
+										we declared it first in our HTML page */
+	width: 15%; 					/* We need to set the width whenever we float an element */
+}
+
+#sidebar-right {
+	float: left; 					/* This causes the sidebar to move to the right */
+	width: 15%; 					/* We need to set the width whenever we float an element */
+}
+
+
+#footer {
+	clear: both; 					/* This makes sure that the footer clears both the sidebar and content floats */
+	width: 960px;					/* This sets the header to stretch the full page width */
+}
+
+
+/*
+ * For Demonstration Only
+ * This code is just for the purpose of the demonstration to hightlight things so that you can see them
+ */
+
+
+body {
+	background-color: #eee;
+	color: white;
+}
+#container {
+	background-color: blue; 		/* Set the background of the container to the same as the #content area */
+}
+#header {
+	background-color: aqua;
+	height: 100px;
+}
+#content {
+	background-color: blue;
+}
+#sidebar-left, #sidebar-right {
+	background-color: green;
+}
+#footer {
+	background-color: black;
+	width: 960px;
+}
+

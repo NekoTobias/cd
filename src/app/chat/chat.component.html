@@ -1,0 +1,10 @@
+
+<div id="header"><app-menubar (changedRoom)="changeRoom($event)" [rooms$]="rooms$" [room$]="room$"></app-menubar></div>
+<div id="sidebar-left"><app-leftbar [room$]="room$" [ownchatter$]="ownchatter$" [chatters$]="chatters$"></app-leftbar></div>
+<!-- <div id="content"><app-centersection></app-centersection></div>
+<div id="sidebar-right"><app-rightbar></app-rightbar></div> -->
+<div id="content"><app-chatsection (sendMessageEmitter)="sendMessage($event)" [messageTmp]="messagesTmp" [rooms$]="rooms$" [room2]="room2" [room$]="room$"></app-chatsection> </div>
+<!-- <div id="footer"><app-</div> -->
+<button (click)="LogOut()">logge chatter</button>
+
+

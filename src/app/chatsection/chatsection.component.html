@@ -1,0 +1,8 @@
+<div id="content">
+<p>
+  chatsection works!
+</p>
+
+<div id="left" ><app-centersection (sendMessageEmitter)="sendMessage($event)" [room2]="room2" [room$]="room$"></app-centersection></div>
+<div id="sidebar-right"><app-rightbar [messageTmp]="messageTmp" [room$]="room$"></app-rightbar></div>
+</div>
