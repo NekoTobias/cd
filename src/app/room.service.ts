@@ -4,8 +4,6 @@
 // import { Observable, of, from } from 'rxjs';
 // import { Room } from './room';
 
-
-
 // @Injectable({
 //   providedIn: 'root'
 // })
@@ -37,8 +35,6 @@
 //     //return  Array.from(this.roommap.values());
 //   }
 
-  
-
 //   // constructor(private readonly _httpClient: HttpClient) {
 //   // }
 
@@ -63,68 +59,62 @@
 //   // }
 
 // }
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
-import { environment } from 'src/environments/environment';
-import { Observable, of } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-import { Room } from './room';
-import { Message } from './message';
+import { environment } from "../environments/environment";
+import { Observable, of } from "rxjs";
+import { map, tap } from "rxjs/operators";
+import { Room } from "./room";
+import { Message } from "./message";
 
-
-
-
-
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
 export class RoomService {
-    constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-   
-    getAll() :Observable<Room[]>  {
-        // let body = new FormData();
-        // body.append('message', 'Joele');
-        // console.log('stri')
-        // this.http.post(`http://localhost:4000/rooms/1/messages`,new Message("abc")).subscribe(data => {
-        //     console.log(data);
-        //  },
-        //  err => {
-        //       console.log('Error: ' + err.error);
-        //   });
-        return this.http.get<Room[]>(`${environment.config.apiUrl}/rooms`);
-        
-        
-    }
+  getAll(): Observable<Room[]> {
+    // let body = new FormData();
+    // body.append('message', 'Joele');
+    // console.log('stri')
+    // this.http.post(`http://localhost:4000/rooms/1/messages`,new Message("abc")).subscribe(data => {
+    //     console.log(data);
+    //  },
+    //  err => {
+    //       console.log('Error: ' + err.error);
+    //   });
+    return this.http.get<Room[]>(`${environment.config.apiUrl}/rooms`);
+  }
 
-    getById(id: number): Observable<Room>  {
-        // console.log("d")
-        // console.log(id)
-        return this.http.get<Room>(`${environment.config.apiUrl}/rooms/${id}`);
-    }
+  getById(id: number): Observable<Room> {
+    // console.log("d")
+    // console.log(id)
+    return this.http.get<Room>(`${environment.config.apiUrl}/rooms/${id}`);
+  }
 
-    public getTest(): string {
- 
-      return "test";
-    }
+  public getTest(): string {
+    return "test";
+  }
 
-    public pushMessage(room: Room, message:string)  {
-        // console.log('mmmmm')
-        // console.log(""+message)
-        // let mym=new Message("jdjdjdd");
-        // console.log(mym)
-        // console.log(room.pid)
-        // let pid= room.pid
-        // let body = new FormData();
-        // body.append('message', 'Joele');
-        // console.log(`${environment.config.apiUrl}/rooms/${pid}/messages`)
-        // console.log(this.http.post<void>(`${environment.config.apiUrl}/rooms/1/messages`, body));
-        this.http.post<any>(`${environment.config.apiUrl}/rooms/${room.pid}/messages`, message).subscribe();
-    }
+  public pushMessage(room: Room, message: string) {
+    // console.log('mmmmm')
+    // console.log(""+message)
+    // let mym=new Message("jdjdjdd");
+    // console.log(mym)
+    // console.log(room.pid)
+    // let pid= room.pid
+    // let body = new FormData();
+    // body.append('message', 'Joele');
+    // console.log(`${environment.config.apiUrl}/rooms/${pid}/messages`)
+    // console.log(this.http.post<void>(`${environment.config.apiUrl}/rooms/1/messages`, body));
+    this.http
+      .post<any>(
+        `${environment.config.apiUrl}/rooms/${room.pid}/messages`,
+        message
+      )
+      .subscribe();
+  }
 
-    public getMe(): Observable<Room> {
-     
-      return this.http.get<Room>(`${environment.config.apiUrl}/rooms/current`);
-}
-
-   
+  public getMe(): Observable<Room> {
+    return this.http.get<Room>(`${environment.config.apiUrl}/rooms/current`);
+  }
 }

@@ -43,63 +43,74 @@
 
 // }
 
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
-import { environment } from 'src/environments/environment';
-import { Observable, of } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-import { Chatter } from './chatter';
+import { environment } from "../environments/environment";
+import { Observable, of } from "rxjs";
+import { map, tap } from "rxjs/operators";
+import { Chatter } from "./chatter";
 
-
-
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
 export class ChatterService {
   changeAva(event: any): any {
-    this.http.post<any>(`${environment.config.apiUrl}/chatters/currentavatar`,[event]).subscribe();
+    this.http
+      .post<any>(`${environment.config.apiUrl}/chatters/currentavatar`, [event])
+      .subscribe();
   }
 
   getAllAvas(): Observable<any> {
-    return this.http.get<string[]>(`${environment.config.apiUrl}/chatters/current/avatars`);
+    return this.http.get<string[]>(
+      `${environment.config.apiUrl}/chatters/current/avatars`
+    );
   }
-    constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-    getAll() :Observable<Chatter[]>  {
-        return this.http.get<Chatter[]>(`${environment.config.apiUrl}/chatters`);
-    }
+  getAll(): Observable<Chatter[]> {
+    return this.http.get<Chatter[]>(`${environment.config.apiUrl}/chatters`);
+  }
 
-    getById(id: number): Observable<Chatter>  {
-        return this.http.get<Chatter>(`${environment.config.apiUrl}/chatters/${id}`);
-    }
+  getById(id: number): Observable<Chatter> {
+    return this.http.get<Chatter>(
+      `${environment.config.apiUrl}/chatters/${id}`
+    );
+  }
 
-    uploadAvatar(uploadData){
-        console.log('pppp')
-        console.log(uploadData)
-        const headers = new HttpHeaders();
-        headers.append('Content-Type', 'multipart/form-data');
-        headers.append('Accept', 'application/json');
-      //  this.http.post('api/upload', uploadData, {headers: headers})
-        this.http.post<any>(`${environment.config.apiUrl}/chatters/current/avatars`,uploadData,{headers: headers}).subscribe();
-    }
+  uploadAvatar(uploadData) {
+    console.log("pppp");
+    console.log(uploadData);
+    const headers = new HttpHeaders();
+    headers.append("Content-Type", "multipart/form-data");
+    headers.append("Accept", "application/json");
+    //  this.http.post('api/upload', uploadData, {headers: headers})
+    this.http
+      .post<any>(
+        `${environment.config.apiUrl}/chatters/current/avatars`,
+        uploadData,
+        { headers: headers }
+      )
+      .subscribe();
+  }
 
-    
-    public getMe(): Observable<Chatter> {
-      // this.a$=this.http.get<Chatter>(`${environment.config.apiUrl}/chatters/current`);
-      // console.log("sss")
-      // console.log(this.a$)
-      // return this.a$;
-      return this.http.get<Chatter>(`${environment.config.apiUrl}/chatters/current`);
-}
+  public getMe(): Observable<Chatter> {
+    // this.a$=this.http.get<Chatter>(`${environment.config.apiUrl}/chatters/current`);
+    // console.log("sss")
+    // console.log(this.a$)
+    // return this.a$;
+    return this.http.get<Chatter>(
+      `${environment.config.apiUrl}/chatters/current`
+    );
+  }
 
-    // register(user: Chatter) {
-    //     return this.http.post(`${environment.config.apiUrl}/chatters/register`, user);
-    // }
+  // register(user: Chatter) {
+  //     return this.http.post(`${environment.config.apiUrl}/chatters/register`, user);
+  // }
 
-    // update(user: Chatter) {
-    //     return this.http.put(`${environment.config.apiUrl}/chatters/${user.pid}`, user);
-    // }
+  // update(user: Chatter) {
+  //     return this.http.put(`${environment.config.apiUrl}/chatters/${user.pid}`, user);
+  // }
 
-    // delete(id: number) {
-    //     return this.http.delete(`${environment.config.apiUrl}/chatters/${id}`);
-    // }
+  // delete(id: number) {
+  //     return this.http.delete(`${environment.config.apiUrl}/chatters/${id}`);
+  // }
 }
