@@ -1,9 +1,12 @@
-﻿<h1>Hi {{currentUser.firstName}}!</h1>
-<p>You're logged in with Angular 7!!</p>
-<h3>All registered users:</h3>
+<h1>You are logged in as {{currentUser.username}}!</h1>
+<!-- <p>You're logged in with Angular 7!!</p> -->
+<!-- <h3>All registered users:</h3>
 <ul>
-    <li *ngFor="let user of users">
-        {{user.username}} ({{user.id}} {{user.email}})
-        - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
-    </li>
-</ul>
+  <li *ngFor="let user of users">
+    {{user.username}} ({{user.id}} {{user.email}}) -
+    <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+  </li>
+</ul> -->
+<a [routerLink]="['/chat']">Go to Chat</a><br /><br />
+<a [routerLink]="['/chatters/current']">Go to my profile</a><br /><br />
+<button (click)="onNavigate()">Start Backend</button>
